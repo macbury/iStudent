@@ -1,0 +1,9 @@
+$(function(){
+	<% flash.each do |type, msg| %>
+	$("#notification-templates").notify("create", "<%= type %>-template", {
+	    text: <%= msg.inspect.html_safe %>
+	}, { custom:true });
+	<% end %>
+	
+	<%= yield %>
+});

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iStudent</title>
+	<%= csrf_meta_tag %>
+  
+	<%= javascript_include_merged(:app).html_safe %>
+	<%= stylesheet_link_merged(:app).html_safe %>
+	<%= yield :head %>
+</head>
+<body>
+	<%= render :partial => "shared/notices" %>
+	
+	<div class="top-bar"></div>
+	
+	<!-- Wrapper START -->
+	<div class="wrapper">
+		<!-- Header START -->
+			<header class="top-header">
+				<h1><a href="#">iStudent</a></h1>
+				<nav>
+					<ul>
+						<li><a href="#" class="selected">Tablica</a></li>
+						<li><a href="#">Plan zajęć</a></li>
+						<li><a href="#">Indeks</a></li>
+						<li><a href="#">Projekty</a></li>
+						<li><a href="#">Pliki</a></li>
+						<li><a href="#">Przypomnienia</a></li>
+						<li><a href="#">Klasa</a></li>
+						<li class="right"><%= link_to "Wyloguj", destroy_user_session_path %></li>
+						<li class="right"><a href="#">Ustawienia</a></li>
+					</ul>
+				</nav>
+			</header>
+		<!-- Header END -->
+		
+		<!-- Container START -->
+		<div class="container">
+			<%= yield %>
+		</div>
+		<!-- Container END -->
+		
+	</div>
+	<!-- Wrapper END -->
+	
+
+</body>
+</html>

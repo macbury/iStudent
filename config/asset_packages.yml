@@ -1,0 +1,40 @@
+--- 
+javascripts: 
+- app:
+  - lib/jquery-1.4.2
+  - lib/jquery.rails
+  - lib/jquery.ui.core
+  - lib/jquery.ui.widget
+  - lib/jquery.ui.position
+  - lib/jquery.ui.mouse
+  - lib/jquery.ui.button
+  - lib/jquery.ui.selectmenu
+  - lib/jquery.autogrow
+  - lib/jquery.ui.notify
+  - lib/jquery.weekcalendar
+  - lib/jquery.ui.draggable
+  - lib/jquery.ui.droppable
+  - controllers/application_controller
+  - controllers/dashboard_controller
+  - controllers/klasses_controller
+  
+stylesheets: 
+- app: 
+  - application
+  - formtastic
+  - formtastic_changes
+  - jquery.ui.accordion
+  - jquery.ui.autocomplete
+  - jquery.ui.button
+  - jquery.ui.core
+  - jquery.ui.datepicker
+  - jquery.ui.dialog
+  - jquery.ui.notify
+  - jquery.ui.progressbar
+  - jquery.ui.resizable
+  - jquery.ui.selectable
+  - jquery.ui.selectmenu
+  - jquery.ui.slider
+  - jquery.ui.tabs
+  - jquery.ui.theme
+  - jquery.weekcalendar

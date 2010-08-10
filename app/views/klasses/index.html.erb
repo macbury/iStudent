@@ -1,0 +1,39 @@
+<%= content_for :head do %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		klasses_controller.init();
+	});
+</script>
+<% end %>
+
+<%= render :partial => "/shared/sidebar" %>
+
+<div class="content">
+	<h2>Szukaj swojej klasy</h2>
+	<%= form_for Klass.new, :url => search_klasses_path, :id => "klasses_search_form" do |f| %>
+	<table class="table classes-list">
+	  <thead>
+	  	<tr>
+		    <th><%= f.text_field :name, :placeholder => "Kierunek..." %></th>
+		    <th><%= f.text_field :school, :placeholder => "Szkoła..." %></th>
+				<th class="center">
+					<%= f.select :year, (1.years.ago.year..5.years.from_now.year).map { |year| ["#{year}/#{year+1}", year] }, :include_blank => false %>
+				</th>
+				<th class="center"><%= link_to "Utwórz nową", new_klass_path, :class => "button" %></th>
+		  </tr>
+	  </thead>
+
+		<tbody>
+			<% @klasses.each do |klass| %>
+			  <tr>
+			    <td><%= klass.name %></td>
+			    <td><%= klass.school %></td>
+					<td class="center"><%= klass.year_array.join("/") %></td>
+					<td class="center"><%= link_to "Dołącz", "#", :class => "button" %></td>
+			  </tr>
+			<% end %>
+		</tbody>
+	</table>
+	<% end %>
+</div>
+

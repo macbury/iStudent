@@ -1,0 +1,35 @@
+<% unless flash.empty? %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		$("#notification-templates").notify({ custom: true });
+		<% flash.each do |type, msg| %>
+		$("#notification-templates").notify("create", "<%= type %>-template", {
+		    text: <%= msg.inspect.html_safe %>
+		}, { custom:true });
+		<% end %>
+	});
+</script>
+<% end %>
+<div style="display:none" id="notification-templates">
+	<div id="notice-template" class="ui-state-highlight">
+		<!-- close link -->
+		<a class="ui-notify-close" href="#">
+			<span class="ui-icon ui-icon-close" style="float:right"></span>
+		</a>
+
+     <!-- alert icon -->
+     <span style="float:left; margin:0px 5px 0 0;" class="ui-icon ui-icon-info"></span>
+     <p>#{text}</p>
+	</div>
+	
+	<div id="error-template" class="ui-state-error">
+		<!-- close link -->
+		<a class="ui-notify-close" href="#">
+			<span class="ui-icon ui-icon-close" style="float:right"></span>
+		</a>
+
+     <!-- alert icon -->
+		<span style="float:left; margin:0px 5px 0 0;" class="ui-icon ui-icon-alert"></span>
+		<p>#{text}</p>
+	</div>
+</div>

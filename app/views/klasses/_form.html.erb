@@ -1,0 +1,10 @@
+<%= semantic_form_for(@klass) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :name %>
+		<%= f.input :school %>
+		<%= f.input :year, :as => :select, :collection => (1.years.ago.year..5.years.from_now.year).map { |year| ["#{year}/#{year+1}", year] }, :include_blank => false %>
+	<% end %>
+
+  <button>Zapisz</button>
+	<%= link_to 'Anuluj', klasses_path, :class => "button" %>
+<% end %>
