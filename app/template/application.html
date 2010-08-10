@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+   
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Application</title>
+	<link rel="stylesheet" href="stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="stylesheets/jquery.ui.core.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.theme.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.button.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.selectmenu.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.notify.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script src="javascripts/lib/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.widget.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.position.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.mouse.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.button.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.selectmenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.autogrow.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.notify.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="javascripts/controllers/application_controller.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/controllers/dashboard_controller.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function () {
+			dashboard_controller.init();
+			
+			$("#notification-templates").notify({ custom: false });
+			$("#notification-templates").notify("create", "notice-template", {
+			    title: 'Test Notification',
+			    text: 'This is an example of the default config, and will fade out after five seconds.'
+			}, { custom:true });
+			
+			$("#notification-templates").notify("create", "error-template", {
+			    title: 'Test Notification',
+			    text: 'This is an example of the default config, and will fade out after five seconds.'
+			}, { custom:true });
+		});
+	</script>
+</head>
+<body>
+	<div style="display:none" id="notification-templates">
+		<div id="notice-template" class="ui-state-highlight">
+			<!-- close link -->
+			<a class="ui-notify-close" href="#">
+					<span class="ui-icon ui-icon-close" style="float:right"></span>
+			</a>
+
+	     <!-- alert icon -->
+	     <span style="float:left; margin:2px 5px 0 0;" class="ui-icon ui-icon-info"></span>
+
+	     <h1>#{title}</h1>
+	     <p>#{text}</p>
+		</div>
+		
+		<div id="error-template" class="ui-state-error">
+			<!-- close link -->
+			<a class="ui-notify-close" href="#">
+					<span class="ui-icon ui-icon-close" style="float:right"></span>
+			</a>
+
+	     <!-- alert icon -->
+			<span style="float:left; margin:2px 5px 0 0;" class="ui-icon ui-icon-alert"></span>
+
+			<h1>#{title}</h1>
+			<p>#{text}</p>
+		</div>
+	</div>
+	<div class="top-bar"></div>
+	
+	<!-- Wrapper START -->
+		<div class="wrapper">
+			<!-- Header START -->
+				<header class="top-header">
+					<h1><a href="#">iStudent</a></h1>
+					<nav>
+						<ul>
+							<li><a href="#" class="selected">Tablica</a></li>
+							<li><a href="#">Plan zajęć</a></li>
+							<li><a href="#">Indeks</a></li>
+							<li><a href="#">Projekty</a></li>
+							<li><a href="#">Pliki</a></li>
+							<li><a href="#">Przypomnienia</a></li>
+							<li><a href="#">Klasa</a></li>
+							<li class="right"><a href="#">Wyloguj</a></li>
+							<li class="right"><a href="#">Ustawienia</a></li>
+						</ul>
+					</nav>
+				</header>
+			<!-- Header END -->
+			
+			<!-- Container START -->
+				<div class="container">
+					<!-- Sidebar START -->
+						<nav class="sidebar">
+
+							<h3>Szukaj</h3>
+							<form class="search">
+								<input type="text" placeholder="Wprowadź zapytanie..."/>
+							</form>
+
+							<hr />
+
+							<h3>Plan na dzisiaj</h3>
+
+							<ul>
+								<li><a href="#">Logika</a></li>
+								<li><a href="#">Programowanie Struktualne i Obiektowe</a></li>
+								<li><a href="#">Matematyka</a></li>
+								<li><a href="#">Systemy Operacyjne</a></li>
+							</ul>
+
+							<hr />
+
+							<h3>Do zrobienia</h3>
+
+							<ul>
+								<li><a href="#"><input type="checkbox" />Oddaj ksiązkę</a></li>
+								<li><a href="#"><input type="checkbox" />Referat</a></li>
+								<li><a href="#"><input type="checkbox" />Napisz program</a></li>
+								<li><a href="#"><input type="checkbox" />Praca magisterska</a></li>
+								<li><a href="#"><input type="checkbox" />Opłać semestr</a></li>
+							</ul>
+
+						</nav>
+					<!-- Sidebar END -->
+
+					<!-- Content START -->
+						<div class="content">
+							<!-- New status form START -->
+								<form class="new-status">
+									<textarea></textarea>
+
+									<div class="control-bar">
+										<div class="right">
+											<input type="checkbox" id="private-msg" /><label for="private-msg">Prywatna wiadomość</label>
+											<input type="submit" name="some_name" value="Dodaj" />
+										</div>
+										<select class="attachments">
+											<option class="none">Brak załącznika</option>
+											<option class="file">Plik</option>
+											<option class="grade">Ocenę</option>
+											<option class="task">Zadanie</option>
+											<option class="link">Link</option>
+										</select>
+
+										<div class="clear"></div>
+										<div class="big-loader"></div>
+									</div>
+								</form>
+							<!-- New status form END -->
+
+							<!-- Statuses START -->
+								<ul class="statuses">
+									<li class="day">
+										<h3>Dzisiaj</h3>
+									</li>
+
+									<li>
+										<div class="avatar">
+											<a href="#"><img src="http://www.gravatar.com/avatar/205e460b479e2e5b38aec07710c08d50?s=50" /></a>
+										</div>
+										<section>
+											<a href="#" class="nick">Arkadiusz Buras</a>
+											<article>
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+											</article>
+											<div class="details">
+												<time datetime="2009-02-17T05:00" class="time">dodano 2 sekundy temu</time> · <a href="#">Dodaj komentarz</a> · <a href="#">Dodaj do zasobów</a> · <a href="#">Obserwuj wpis</a>
+											</div>
+											<ol class="comments">
+												<li>
+													<a href="#" class="mini-avatar"><img src="http://www.gravatar.com/avatar/205e460b479e2e5b38aec07710c08d50?s=12" /></a>
+													<a href="#" class="nick">MacBury</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+												</li>
+												<li>
+													<a href="#" class="mini-avatar"><img src="http://www.gravatar.com/avatar/205e460b479e2e5b38aec07710c08d50?s=12" /></a>
+													<a href="#" class="nick">Elvis</a> Coś tam bez sensu napisane...
+												</li>
+												
+												<li>
+													<form class="new-comment">
+														<input type="submit" value="Dodaj komentarz" class="right" />
+														<textarea placeholder="Napisz komentarz..."></textarea>
+														<div class="clear"></div>
+													</form>
+												</li>
+											</ol>
+										</section>
+									</li>
+									<li>
+										<script type="text/javascript" id="AdTaily_Widget" src="http://static.adtaily.pl/widget.js#AkrSVrHEIrsrB8K"></script>
+							      <noscript><a href="http://www.adtaily.pl">Prosta i tania reklama w Internecie sprzedawana za pomocą AdTaily</a>(PLALLADTAILY0002)</noscript>
+
+									</li>
+
+									<li class="day">
+										<h3>Wczoraj</h3>
+									</li>
+
+									<li>
+										<div class="avatar">
+											<a href="#"><img src="http://www.gravatar.com/avatar/205e460b479e2e5b38aec07710c08d50?s=50" /></a>
+										</div>
+										<section>
+											<a href="#" class="nick">Arkadiusz Buras</a>
+											<article>Może się to komuś przyda...</article>
+											<div class="attachment">
+												<a class="preview" href="#"></a>
+												<article>
+													<a href="#">Nauka pisania w xCode</a>
+													<ol>
+														<li><strong>Typ:</strong> PDF</li>
+														<li><strong>Rozmiar:</strong> 133 KB</li>
+													</ol>
+												</article>
+											</div>
+											<div class="details">
+												<time datetime="2009-02-17T05:00" class="time">dodano o godzinie 12:33</time> · <a href="#">Dodaj komentarz</a> · <a href="#">Dodaj do zasobów</a>
+											</div>
+										</section>
+									</li>
+								</ul>
+							<!-- Statuses END -->
+
+							<div class="clear"></div>
+						</div>
+					<!-- Content END -->
+				</div>
+			<!-- Container END -->
+
+			<footer>
+				Arkadiusz Buras 2010
+			</footer>
+		</div>
+	<!-- Wrapper END -->
+</body>
+</html>

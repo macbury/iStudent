@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+   
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Application</title>
+	<link rel="stylesheet" href="stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="stylesheets/jquery.ui.core.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.theme.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.button.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.selectmenu.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script src="javascripts/lib/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.widget.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.position.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.mouse.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.button.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.selectmenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.autogrow.js" type="text/javascript" charset="utf-8"></script>
+	
+	
+	<script src="javascripts/controllers/application_controller.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/controllers/dashboard_controller.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function () {
+			dashboard_controller.init();
+		});
+	</script>
+</head>
+<body>
+	<div class="top-bar"></div>
+	
+	<!-- Wrapper START -->
+		<div class="wrapper">
+			<!-- Header START -->
+				<header class="top-header">
+					<h1><a href="#">iStudent</a></h1>
+					<nav>
+						<ul>
+							<li><a href="#">Tablica</a></li>
+							<li><a href="#">Plan zajęć</a></li>
+							<li><a href="#" class="selected">Indeks</a></li>
+							<li><a href="#">Projekty</a></li>
+							<li><a href="#">Pliki</a></li>
+							<li><a href="#">Przypomnienia</a></li>
+							<li><a href="#">Klasa</a></li>
+							<li class="right"><a href="#">Wyloguj</a></li>
+							<li class="right"><a href="#">Ustawienia</a></li>
+						</ul>
+					</nav>
+				</header>
+			<!-- Header END -->
+			
+			<!-- Container START -->
+				<div class="container">
+					<!-- Sidebar START -->
+						<nav class="sidebar">
+
+							<h3>Szukaj</h3>
+							<form class="search">
+								<input type="text" placeholder="Wprowadź zapytanie..."/>
+							</form>
+
+							<hr />
+							<h3>Akcje</h3>
+							<ul>
+								<li><a href="#">Dodaj ocenę</a></li>
+								<li><a href="#">Dodaj przedmiot</a></li>
+							</ul>
+							<hr />
+							<h3>Przedmioty</h3>
+
+							<ul>
+								<li><a href="#">Logika</a></li>
+								<li><a href="#">Programowanie Struktualne i Obiektowe</a></li>
+								<li><a href="#">Matematyka</a></li>
+								<li><a href="#">Systemy Operacyjne</a></li>
+							</ul>
+
+						</nav>
+					<!-- Sidebar END -->
+
+					<!-- Content START -->
+						<div class="content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th style="width: 30%">Przedmiot</th>
+										<th style="width: 60%">Oceny</th>
+										<th style="width: 10%">Srednia</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Programowanie obiektowe i struktualne</td>
+										<td>6,6,6,5,4,6</td>
+										<td>5,68</td>
+									</tr>
+									<tr class="alt">
+										<td>Programowanie obiektowe i struktualne</td>
+										<td>6,6,6,5,4,6</td>
+										<td>5,68</td>
+									</tr>
+									<tr>
+										<td>Programowanie obiektowe i struktualne</td>
+										<td>6,6,6,5,4,6</td>
+										<td>5,68</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="clear"></div>
+						</div>
+					<!-- Content END -->
+				</div>
+			<!-- Container END -->
+
+			<footer>
+				Arkadiusz Buras 2010
+			</footer>
+		</div>
+	<!-- Wrapper END -->
+</body>
+</html>

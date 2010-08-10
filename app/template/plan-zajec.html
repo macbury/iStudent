@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+   
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Application</title>
+	<link rel="stylesheet" href="stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="stylesheets/jquery.ui.core.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.theme.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.button.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.ui.selectmenu.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="stylesheets/jquery.weekcalendar.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	
+	<script src="javascripts/lib/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.widget.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.position.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.mouse.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.button.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.selectmenu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.autogrow.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.weekcalendar.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.draggable.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.droppable.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/jquery.ui.datepicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/lib/i18n/jquery.ui.datepicker-pl.js" type="text/javascript" charset="utf-8"></script>
+
+	
+	
+	<script src="javascripts/controllers/application_controller.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/controllers/dashboard_controller.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function () {
+			var $calendar = $('#plan-zajec').weekCalendar({
+				timeslotsPerHour: 4,
+				scrollToHourMillis : 0,
+				buttonText : {
+            today : "dzisiaj",
+            lastWeek : "wczstecz",
+            nextWeek : "dalej"
+				},
+				firstDayOfWeek : function(calendar){
+					return 1;
+        },
+				title: "",
+				use24Hour: true,
+				shortMonths : ['Sty', 'Lut', 'Mar', 'Kwie', 'Maj', 'Czer', 'Lip', 'Sie', 'Wrze', 'Paź', 'Lis', 'Gru'],
+         longMonths : ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpeiń', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+         shortDays : ['Nie', 'Pon', 'Wt', 'Śro', 'Czw', 'Pią', 'Sob'],
+         longDays : ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
+				
+				height: function($calendar){
+					return $(".content").height();
+				},
+				eventRender : function(calEvent, $event) {
+					if(calEvent.end.getTime() < new Date().getTime()) {
+						$event.css("backgroundColor", "#aaa");
+						$event.find(".time").css({"backgroundColor": "#999", "border":"1px solid #888"});
+					}
+				},
+				eventNew : function(calEvent, $event) {
+					alert("You've added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.");
+				},
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="top-bar"></div>
+	
+	<!-- Wrapper START -->
+		<div class="wrapper">
+			<!-- Header START -->
+				<header class="top-header">
+					<h1><a href="#">iStudent</a></h1>
+					<nav>
+						<ul>
+							<li><a href="#">Tablica</a></li>
+							<li><a href="#" class="selected">Plan zajęć</a></li>
+							<li><a href="#">Indeks</a></li>
+							<li><a href="#">Projekty</a></li>
+							<li><a href="#">Pliki</a></li>
+							<li><a href="#">Przypomnienia</a></li>
+							<li><a href="#">Klasa</a></li>
+							<li class="right"><a href="#">Wyloguj</a></li>
+							<li class="right"><a href="#">Ustawienia</a></li>
+						</ul>
+					</nav>
+				</header>
+			<!-- Header END -->
+			
+			<!-- Container START -->
+				<div class="container">
+					<!-- Sidebar START -->
+						<nav class="sidebar">
+
+							<h3>Szukaj</h3>
+							<form class="search">
+								<input type="text" placeholder="Wprowadź zapytanie..."/>
+							</form>
+							
+							<hr />
+							<h3>Akcje</h3>
+							<ul>
+								<li><a href="#">Dodaj lekcję</a></li>
+								<li><a href="#">Dodaj przedmiot</a></li>
+							</ul>
+							<hr />
+
+							<h3>Przedmioty</h3>
+
+							<ul>
+								<li><a href="#">Logika</a></li>
+								<li><a href="#">Programowanie Struktualne i Obiektowe</a></li>
+								<li><a href="#">Matematyka</a></li>
+								<li><a href="#">Systemy Operacyjne</a></li>
+								<li><a href="#">Grafika i Multimedia</a></li>
+								<li><a href="#">Logika</a></li>
+								<li><a href="#">Aplikacje internetowe</a></li>
+								<li><a href="#">Systemy Unix</a></li>
+							</ul>
+
+						</nav>
+					<!-- Sidebar END -->
+
+					<!-- Content START -->
+						<div class="content no-padding">
+							<div id="plan-zajec"></div>
+							<div class="clear"></div>
+						</div>
+					<!-- Content END -->
+				</div>
+			<!-- Container END -->
+
+			<footer>
+				Arkadiusz Buras 2010
+			</footer>
+		</div>
+	<!-- Wrapper END -->
+</body>
+</html>
